@@ -1,0 +1,30 @@
+{
+  "name": "StringBuilder",
+  "version": "1.0.0",
+  "description": "JS StringBuilder Object",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amunozdelvillar/StringBuilder.git"
+  },
+  "author": "Angel Munoz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amunozdelvillar/StringBuilder/issues"
+  },
+  "homepage": "https://github.com/amunozdelvillar/StringBuilder",
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-karma": "^0.8.3",
+    "karma": "^0.12.23",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^0.1.9",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "mocha": "^1.21.4"
+  }
+}
