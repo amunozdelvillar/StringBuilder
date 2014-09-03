@@ -66,4 +66,22 @@ describe('.cat method', function() {
             expect(sb.buffer).to.have.length(9);
         });
     });
+
+    describe('should be able to receive arrays as parameters',function(){
+        it('should receive an array object', function(){
+            sb.cat(['hello']);
+            expect(sb.buffer[0]).to.equal('hello');
+            sb.cat(['world']);
+            expect(sb.buffer[1]).to.equal('world');
+            sb.cat(['!!!']);
+            expect(sb.buffer[2]).to.equal('!!!');
+            expect(sb.buffer).to.have.length(3);
+
+        });
+
+        it('should be able to receive arrays along with functions as parameters', function(){
+            sb.cat('this', [' is', function(){ return [' a', ' function that',
+            ' returns an array']; }], ' ;)');
+        });
+    });
 });

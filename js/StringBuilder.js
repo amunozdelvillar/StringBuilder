@@ -12,10 +12,11 @@
         for(var i = 0; i < args.length; i++){
             if(typeof args[i] === 'function'){
                 this.cat(args[i]());
+            } else if( Object.prototype.toString.call(args[i]) === '[object Array]') {
+                this.cat.apply(this,args[i]);
             } else {
                 this.buffer.push(args[i]);
             }
-
         }
         return this;
     };
