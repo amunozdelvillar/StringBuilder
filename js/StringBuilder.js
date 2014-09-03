@@ -21,5 +21,14 @@
         return this;
     };
 
+    StringBuilder.prototype.rep = function(){
+        var args   = Array.prototype.slice.call(arguments, 0, -1),
+            repeat = arguments[arguments.length - 1];
+        for(var i = 0; i < repeat; i++){
+            this.cat(args[0]);
+        }
+        return this;
+    };
+
     exports.StringBuilder = StringBuilder;
 })(this);
