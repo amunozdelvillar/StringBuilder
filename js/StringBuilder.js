@@ -30,5 +30,17 @@
         return this;
     };
 
+    StringBuilder.prototype.catIf = function(){
+        var args  = Array.prototype.slice.call(arguments, 0, -1),
+            concatenate = arguments[arguments.length - 1];
+        console.log(args);
+        for(var i = 0; i < args.length; i++){
+            if(concatenate){
+                this.cat(args[i]);
+            }
+        }
+      return this;
+    };
+
     exports.StringBuilder = StringBuilder;
 })(this);
