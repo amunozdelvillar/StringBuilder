@@ -4,7 +4,7 @@
 
 var chai = chai || require("chai");
 expect = chai.expect;
-describe('.cat method', function() {
+describe('#cat', function() {
     var sb;
 
     beforeEach(function(){
@@ -20,18 +20,17 @@ describe('.cat method', function() {
         });
 
         it('should concat multiple String values from N parameters',function(){
-            sb.cat('hello', 'world','!!!');
-            expect(sb.buffer[0]).to.equal('hello');
-            expect(sb.buffer[1]).to.equal('world');
-            expect(sb.buffer[2]).to.equal('!!!');
+            sb.cat('hello', ' world','!!!');
+            expect(sb.string()).to.equal('hello world!!!');
+            //TODO: sperate
             expect(sb.buffer).to.have.length(3);
             sb.cat('yeah!');
             expect(sb.buffer).to.have.length(4);
         });
     });
 
-    describe('should be able to call cat as a chain,', function(){
-        it('should use the cascade pattern wisely',function(){
+
+        it('should be able to call cat as a chain',function(){
             sb.cat('hello',' ').cat('world');
             expect(sb.buffer[0]).to.equal('hello');
             expect(sb.buffer[1]).to.equal(' ');
@@ -39,7 +38,6 @@ describe('.cat method', function() {
             expect(sb.buffer).to.have.length(3);
             expect(sb.cat()).to.be.an.instanceOf(StringBuilder);
         });
-    });
 
     describe('should be able to receive Functions as parameters', function(){
         it('should receive a function objects', function(){

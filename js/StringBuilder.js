@@ -2,9 +2,10 @@
  * Created by angel on 1/09/14.
  */
 (function(exports){
-    var StringBuilder;
-    StringBuilder = function(){
+    var StringBuilder = function(){
         this.buffer = [];
+        this.prefix = '';
+        this.suffix = '';
     };
 
     StringBuilder.prototype.cat = function(){
@@ -15,7 +16,7 @@
             } else if( Object.prototype.toString.call(args[i]) === '[object Array]') {
                 this.cat.apply(this,args[i]);
             } else {
-                this.buffer.push(args[i]);
+                this.buffer.push(this.prefix + args[i] + this.suffix);
             }
         }
         return this;
@@ -47,6 +48,12 @@
             result += this.buffer[i];
         }
         return result;
+    };
+
+    StringBuilder.prototype.wrap = function(prefix, suffix){
+        this.prefix = prefix;
+        this.suffix = suffix;
+        return this;
     };
 
     exports.StringBuilder = StringBuilder;
