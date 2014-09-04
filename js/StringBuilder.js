@@ -33,13 +33,20 @@
     StringBuilder.prototype.catIf = function(){
         var args  = Array.prototype.slice.call(arguments, 0, -1),
             concatenate = arguments[arguments.length - 1];
-        console.log(args);
         for(var i = 0; i < args.length; i++){
             if(concatenate){
                 this.cat(args[i]);
             }
         }
       return this;
+    };
+
+    StringBuilder.prototype.string = function(){
+        var result = '';
+        for(var i = 0; i < this.buffer.length; i++){
+            result += this.buffer[i];
+        }
+        return result;
     };
 
     exports.StringBuilder = StringBuilder;
