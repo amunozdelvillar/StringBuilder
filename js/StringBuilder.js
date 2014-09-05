@@ -4,8 +4,8 @@
 (function(exports){
     var StringBuilder = function(){
         this.buffer = [];
-        this.prefix = '';
-        this.suffix = '';
+        this.prefx = '';
+        this.suffx = '';
     };
 
     function isArray(object){
@@ -21,7 +21,7 @@
             } else if(isArray(args[i])) {
                 this.cat.apply(this,args[i]);
             } else {
-                this.buffer.push(this.prefix + args[i] + this.suffix);
+                this.buffer.push(this.prefx + args[i] + this.suffx);
             }
         }
         return this;
@@ -56,14 +56,20 @@
     };
 
     StringBuilder.prototype.wrap = function(prefix, suffix){
-        this.prefix = (typeof prefix === 'object') ? prefix.join([separator = '']) : prefix;
-        this.suffix = (typeof suffix === 'object') ? suffix.join([separator = '']) : suffix;
+        this.prefx = (typeof prefix === 'object') ? prefix.join([separator = '']) : prefix;
+        this.suffx = (typeof suffix === 'object') ? suffix.join([separator = '']) : suffix;
         return this;
     };
 
     StringBuilder.prototype.end = function(deep){
         this.prefix = '';
         this.suffix = '';
+        return this;
+    };
+
+    StringBuilder.prototype.prefix = function(){
+        var args = Array.prototype.slice.call(arguments);
+        this.prefx = (typeof args === 'object') ? args.join([separator = '']) : '';
         return this;
     };
 
