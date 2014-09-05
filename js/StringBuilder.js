@@ -8,12 +8,17 @@
         this.suffix = '';
     };
 
+    function isArray(object){
+        return typeof Object.prototype.toString.call( object ) === '[object Array]';
+    }
+
     StringBuilder.prototype.cat = function(){
         var args = Array.prototype.slice.call(arguments);
+
         for(var i = 0; i < args.length; i++){
             if(typeof args[i] === 'function'){
                 this.cat(args[i]());
-            } else if( Object.prototype.toString.call(args[i]) === '[object Array]') {
+            } else if(isArray(args[i])) {
                 this.cat.apply(this,args[i]);
             } else {
                 this.buffer.push(this.prefix + args[i] + this.suffix);
@@ -51,8 +56,14 @@
     };
 
     StringBuilder.prototype.wrap = function(prefix, suffix){
-        this.prefix = prefix;
-        this.suffix = suffix;
+        this.prefix = (typeof prefix === 'object') ? prefix.join([separator = '']) : prefix;
+        this.suffix = (typeof suffix === 'object') ? suffix.join([separator = '']) : suffix;
+        return this;
+    };
+
+    StringBuilder.prototype.end = function(deep){
+        this.prefix = '';
+        this.suffix = '';
         return this;
     };
 

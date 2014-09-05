@@ -21,9 +21,11 @@ describe('.wrap method', function(){
             expect(sb.string()).to.equal('<ul>Angel</li></ul></li>');
         });
 
-        it.only('should add a prefix and suffix', function(){
+        it('should add a prefix and suffix', function(){
             sb.wrap('<li>', ['</li>']).cat('list item');
             expect(sb.string()).to.equal('<li>list item</li>');
+            sb.wrap('-',['*','-']).cat('angel');
+            expect(sb.string()).to.equal('<li>list item</li>-angel*-');
         });
     });
 
