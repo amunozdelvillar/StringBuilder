@@ -79,5 +79,12 @@
         return this;
     };
 
+    StringBuilder.prototype.each = function(args, callback){
+        for(var i = 0; i < args.length; i++){
+            callback.call(this, args[i], i , args);
+        }
+        return this;
+    };
+
     exports.StringBuilder = StringBuilder;
 })(this);
