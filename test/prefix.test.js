@@ -27,7 +27,6 @@ describe('#prefix', function(){
     describe('should be able to chain with other SB methods', function(){
         it('should return an instance of StringBuilder', function(){
             expect(sb.prefix('hello','world')).to.be.an.instanceOf(StringBuilder);
-            console.log(sb);
         });
     });
 });

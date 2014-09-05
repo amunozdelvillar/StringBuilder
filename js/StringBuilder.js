@@ -62,14 +62,20 @@
     };
 
     StringBuilder.prototype.end = function(deep){
-        this.prefix = '';
-        this.suffix = '';
+        this.prefx = '';
+        this.suffx = '';
         return this;
     };
 
     StringBuilder.prototype.prefix = function(){
         var args = Array.prototype.slice.call(arguments);
         this.prefx = (typeof args === 'object') ? args.join([separator = '']) : '';
+        return this;
+    };
+
+    StringBuilder.prototype.suffix = function(){
+        var args = Array.prototype.slice.call(arguments);
+        this.suffx = (typeof args === 'object') ? args.join([separator = '']) : '';
         return this;
     };
 

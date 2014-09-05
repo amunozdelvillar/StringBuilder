@@ -14,6 +14,7 @@ describe('#end',function(){
     describe('should cancel the current or last effect from wrap, prefix or suffix', function(){
         it('should cancel the effect from wrap method', function(){
             sb.cat('hi').wrap(' * ',' * ').cat('angel').end().cat(';');
+            console.log(sb);
             expect(sb.string()).to.equal('hi * angel * ;');
         });
     });
